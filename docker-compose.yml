@@ -30,7 +30,7 @@ services:
     restart: always
 
   nginx:
-    image: nginx:latest
+    image: arm64v8/nginx:latest
     container_name: nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
@@ -48,7 +48,7 @@ services:
     restart: always
 
   certbot:
-    image: certbot/certbot
+    image: certbot/certbot:arm64v8-latest
     container_name: certbot
     volumes:
       - certbot_etc:/etc/letsencrypt
