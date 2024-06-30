@@ -36,6 +36,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - certbot_etc:/etc/letsencrypt
       - certbot_var:/var/lib/letsencrypt
+      - certbot_www:/var/www/certbot
       - wordpress_data:/var/www/html
     ports:
       - "80:80"
@@ -53,7 +54,7 @@ services:
     volumes:
       - certbot_etc:/etc/letsencrypt
       - certbot_var:/var/lib/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - certbot_www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do sleep 6h & wait $${!}; certbot renew; done'"
     networks:
       - wordpress_network
@@ -64,6 +65,7 @@ volumes:
   db_data:
   certbot_etc:
   certbot_var:
+  certbot_www:
 
 networks:
   wordpress_network:
