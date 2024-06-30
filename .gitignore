@@ -1,0 +1,43 @@
+# Terraformのローカル状態ファイル
+terraform.tfstate
+terraform.tfstate.backup
+
+# パーソナルなTerraform設定ファイル
+.terraformrc
+terraform.rc
+
+# ロックファイル
+*.lock.hcl
+
+# 破棄されたプランファイル
+crash.log
+
+# プランアウトプット
+*.tfplan
+
+# モジュールディレクトリ
+.terraform/modules/
+
+# プラグインディレクトリ
+.terraform/providers/
+
+# 忘れがちなファイル
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# .terraformディレクトリ全体を除外する
+.terraform/
+
+# 忘れがちな構成ファイル
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Terraform変数ファイル（特にパーソナル情報が含まれている場合）
+*.tfvars.json
+*.tfvars
+
+# .DS_Storeなどの一般的なMacOSのファイル
+.DS_Store
