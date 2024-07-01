@@ -43,4 +43,31 @@ override.tf.json
 .DS_Store
 
 # Wordpressの設定
-.db_data/
+# WordPress core files
+wordpress_data/wp-admin/
+wordpress_data/wp-includes/
+
+# Configuration files
+wordpress_data/wp-config.php
+wordpress_data/.htaccess
+wordpress_data/.htpasswd
+
+# WordPress specific files
+wordpress_data/index.php
+wordpress_data/license.txt
+wordpress_data/readme.html
+wordpress_data/wp-*.php
+wordpress_data/xmlrpc.php
+
+# Ignore all wp-content except my themes
+wordpress_data/wp-content/*
+!wordpress_data/wp-content/themes
+wordpress_data/wp-content/themes/*
+!wordpress_data/wp-content/themes/next-myblog
+
+# DBデータ
+db_data/*
+!db_data/.gitkeep
+
+# 環境変数ファイル
+.env
