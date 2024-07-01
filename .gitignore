@@ -41,3 +41,6 @@ override.tf.json
 
 # .DS_Storeなどの一般的なMacOSのファイル
 .DS_Store
+
+# Wordpressの設定
+.db_data/
