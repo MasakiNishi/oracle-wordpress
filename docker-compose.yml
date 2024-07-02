@@ -9,6 +9,7 @@ services:
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wordpress
+    user: "1000:1000"
     volumes:
       - ./wordpress_data:/var/www/html
     networks:
