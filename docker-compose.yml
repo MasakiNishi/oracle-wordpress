@@ -12,6 +12,7 @@ services:
     user: "1000:1000"
     volumes:
       - ./wordpress_data:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/php.ini
     networks:
       - wordpress_network
     restart: always
