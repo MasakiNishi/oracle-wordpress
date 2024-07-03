@@ -59,6 +59,9 @@ wordpress_data/readme.html
 wordpress_data/wp-*.php
 wordpress_data/xmlrpc.php
 
+# Wordpress wordfence-waf
+wordpress_data/wordfence-waf.php
+
 # Ignore all wp-content except my themes
 wordpress_data/wp-content/*
 !wordpress_data/wp-content/themes
