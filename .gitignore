@@ -1,3 +1,6 @@
+# Terraform
+deploy/main.tf
+
 # Terraformのローカル状態ファイル
 terraform.tfstate
 terraform.tfstate.backup
@@ -74,3 +77,6 @@ db_data/*
 
 # 環境変数ファイル
 .env
+
+# nginx
+nginx/nginx.conf
