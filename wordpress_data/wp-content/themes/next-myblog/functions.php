@@ -78,7 +78,7 @@ if ( !function_exists( 'responsive_insert_image' ) ) { // 関数が既に存在�
             $html .= '<source media="(max-width: 480px)" type="image/jpeg" srcset="' . $md[0] . ', ' . $md2x[0] . ' 2x">';
             $html .= '<source media="(min-width: 481px)" type="image/webp" srcset="' . $lg[0] . '.webp, ' . $lg2x[0] . '.webp 2x">';
             $html .= '<source media="(min-width: 481px)" type="image/jpeg" srcset="' . $lg[0] . ', ' . $lg2x[0] . ' 2x">';
-            $html .= '<img src="' . $lg[0] . '" class="size-full" alt="' . $alt_text . '" width="' . $lg_width . '" height="' . $lg_height . '">';
+            $html .= '<img loading="lazy" decoding="async" src="' . $lg[0] . '" class="size-full" alt="' . $alt_text . '" width="' . $lg_width . '" height="' . $lg_height . '">';
             $html .= '</picture>'; // pictureタグを終了
             if ($a_elem != "") {
                 $html .= '</a>'; // aタグを閉じる
