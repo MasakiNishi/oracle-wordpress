@@ -93,3 +93,44 @@ if ( !function_exists( 'responsive_insert_image' ) ) { // 関数が既に存在�
     add_filter('image_send_to_editor', 'responsive_insert_image', 10, 9); // フィルターフックを追加して、画像をエディターに送信する際に関数を適用
     add_filter('disable_captions', function($a) { return true; }); // キャプションを無効化するフィルターフックを追加
 }
+
+// REST APIにカスタム画像サイズを追加するフィールドを追加
+add_action('graphql_register_types', function () {
+    // JSONスカラータイプを登録
+    register_graphql_scalar('JSON', [
+        'description' => __('The `JSON` scalar type represents JSON values as specified by ECMA-404.', 'your-text-domain'),
+        'serialize' => function ($value) {
+            return $value;
+        },
+        'parse_value' => function ($value) {
+            return $value;
+        },
+        'parse_literal' => function ($ast) {
+            return $ast->value;
+        },
+    ]);
+
+    // カスタムフィールドを登録
+    register_graphql_field('MediaItem', 'customImageSizes', [
+        'type' => 'JSON',
+        'description' => __('Custom image sizes URLs', 'your-text-domain'),
+        'args' => [
+            'sizes' => [
+                'type' => ['list_of' => 'String'],
+                'description' => __('List of image sizes', 'your-text-domain'),
+            ],
+        ],
+        'resolve' => function($source, $args, $context, $info) {
+            $imageUrls = [];
+            $sizes = isset($args['sizes']) ? $args['sizes'] : ['thumbnail', 'medium', 'large'];
+
+            foreach ($sizes as $size) {
+                $image_src = wp_get_attachment_image_src($source->ID, $size);
+                if ($image_src) {
+                    $imageUrls[$size] = $image_src[0];
+                }
+            }
+            return $imageUrls;
+        },
+    ]);
+});
