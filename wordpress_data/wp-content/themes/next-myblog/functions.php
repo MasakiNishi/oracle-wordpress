@@ -134,3 +134,9 @@ add_action('graphql_register_types', function () {
         },
     ]);
 });
+
+// GraphQL JWT AuthenticationのTokenの期限設定
+function custom_jwt_expiration( $expiration ) {
+    return 60;
+}
+add_filter('graphql_jwt_auth_expire', 'custom_jwt_expiration', 10);
