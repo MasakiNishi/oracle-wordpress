@@ -140,3 +140,12 @@ function custom_jwt_expiration( $expiration ) {
     return 60;
 }
 add_filter('graphql_jwt_auth_expire', 'custom_jwt_expiration', 10);
+
+// GraphQLのLoginとrefreshJwtAuthTokenミューテーションのみ制限を無視する
+add_filter( 
+  'graphql_require_authentication_allowed_fields', 
+  function( $allowed ) {
+    $allowed[] = 'login';
+    $allowed[] = 'refreshJwtAuthToken';
+    return $allowed;
+}, 10, 1 );
