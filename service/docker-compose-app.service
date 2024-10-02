@@ -1,0 +1,14 @@
+[Unit]
+Description=Docker Compose Application Service
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+WorkingDirectory=/home/opc/oracle-wordpress
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
