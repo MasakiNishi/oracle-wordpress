@@ -149,3 +149,6 @@ add_filter(
     $allowed[] = 'refreshJwtAuthToken';
     return $allowed;
 }, 10, 1 );
+
+// 管理Eメール認証の無効化
+add_filter( 'admin_email_check_interval', '__return_false' );
